@@ -7,14 +7,14 @@
 
 using namespace std; 
 
-int iloscWczytywanych = 100;
+int iloscWczytywanych = 10;
 
 int main() {
     
     list<Linia> table = wczytajIPrzefiltruj("projekt2_dane.csv", iloscWczytywanych);
 
     for (const auto& i : table)
-        cout << i.film << " | " << i.rating << std::endl;
+        cout << i.film << " | " << i.rating << endl;
 
 
 

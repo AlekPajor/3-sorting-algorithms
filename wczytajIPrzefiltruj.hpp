@@ -11,7 +11,7 @@ using namespace std;
 struct Linia {
     string indeks;
     string film;
-    string rating;
+    float rating;
 };
 
 list<Linia> wczytajIPrzefiltruj(string filename, int iloscLinii) {
@@ -28,6 +28,7 @@ list<Linia> wczytajIPrzefiltruj(string filename, int iloscLinii) {
             string indeks;
             string film;
             string rating;
+            float float_rating;
 
             getline(s, indeks, ',');
             getline(s, film, ',');
@@ -37,7 +38,16 @@ list<Linia> wczytajIPrzefiltruj(string filename, int iloscLinii) {
             rating.pop_back();
             rating.pop_back();
 
-            linie.push_back({indeks, film, rating});
+            try
+            {
+                float_rating = stof(rating);
+            }
+            catch(const invalid_argument& ia)
+            {
+                continue;
+            }
+
+            linie.push_back({indeks, film, float_rating});
             counter++;
         }
     }
