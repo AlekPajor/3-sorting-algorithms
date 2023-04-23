@@ -6,15 +6,10 @@
 #include <string>
 #include <sstream>
 #include <chrono>
+#include "Linia.hpp"
 
 using namespace std;
 using namespace std::chrono;
-
-struct Linia {
-    string indeks;
-    string film;
-    float rating;
-};
 
 list<Linia> wczytajIPrzefiltruj(string filename, int iloscLinii) {
     ifstream inputFile(filename);
@@ -59,7 +54,7 @@ list<Linia> wczytajIPrzefiltruj(string filename, int iloscLinii) {
     auto stop = high_resolution_clock::now();
     auto duration = duration_cast<microseconds>(stop - start);
     cout << "(Czas wczytywania i odfiltrowywania: "<< duration.count() << " mikrosekund)" << endl;
-    
+
     return linie;
 }
 
