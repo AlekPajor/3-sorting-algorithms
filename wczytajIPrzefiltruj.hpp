@@ -34,12 +34,11 @@ list<Linia> wczytajIPrzefiltruj(string filename, int iloscLinii) {
             getline(s, film, ',');
             getline(s, rating, ',');
 
-            rating.pop_back();
-            rating.pop_back();
-            rating.pop_back();
-
             try
             {
+                rating.pop_back();
+                rating.pop_back();
+                rating.pop_back();
                 float_rating = stof(rating);
             }
             catch(const invalid_argument& ia)
