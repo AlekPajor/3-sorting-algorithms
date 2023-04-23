@@ -5,8 +5,10 @@
 #include <fstream>
 #include <string>
 #include <sstream>
+#include <chrono>
 
 using namespace std;
+using namespace std::chrono;
 
 struct Linia {
     string indeks;
@@ -17,6 +19,7 @@ struct Linia {
 list<Linia> wczytajIPrzefiltruj(string filename, int iloscLinii) {
     ifstream inputFile(filename);
     list<Linia> linie;
+    auto start = high_resolution_clock::now();
     
     if(inputFile.is_open()) {
 
@@ -34,11 +37,12 @@ list<Linia> wczytajIPrzefiltruj(string filename, int iloscLinii) {
             getline(s, film, ',');
             getline(s, rating, ',');
 
+            rating.pop_back();
+            rating.pop_back();
+            rating.pop_back();
+
             try
             {
-                rating.pop_back();
-                rating.pop_back();
-                rating.pop_back();
                 float_rating = stof(rating);
             }
             catch(const invalid_argument& ia)
@@ -51,6 +55,11 @@ list<Linia> wczytajIPrzefiltruj(string filename, int iloscLinii) {
         }
     }
     inputFile.close();
+
+    auto stop = high_resolution_clock::now();
+    auto duration = duration_cast<microseconds>(stop - start);
+    cout << "(Czas wczytywania i odfiltrowywania: "<< duration.count() << " mikrosekund)" << endl;
+    
     return linie;
 }
 
