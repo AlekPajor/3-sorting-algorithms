@@ -15,7 +15,7 @@ int main() {
     //-------------------------
     //SORTOWANIE KUBELKOWE
     // list<Linia> posortowanaLista = sortowanieKubelkowe(lista);
-    // for (const auto& i : tabDoSPS) {
+    // for (const auto& i : posortowanaLista) {
     //     cout << i.film << " | " << i.rating << endl;
     // }
     //-------------------------
