@@ -59,8 +59,6 @@ list<Linia> sortowanieKubelkowe(list<Linia> lista) {
             lista2.emplace_back(*iterator);
         }
     }
-    lista2.reverse(); 
-    //just because im to lazy to change all numbers in switch case, it was supoosed to be Highest->Lowest
 
     auto stop = high_resolution_clock::now();
     auto duration = duration_cast<microseconds>(stop - start);

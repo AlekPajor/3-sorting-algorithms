@@ -45,6 +45,10 @@ list<Linia> wczytajIPrzefiltruj(string filename, int iloscLinii) {
                 continue;
             }
 
+            if(float_rating > 10) {
+                continue;
+            }
+
             linie.push_back({indeks, film, float_rating});
             counter++;
         }
