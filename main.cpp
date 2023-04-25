@@ -2,6 +2,7 @@
 #include "Linia.hpp"
 #include "kubelkowe.hpp"
 #include "przezScalanie.hpp"
+#include "quicksort.hpp"
 
 using namespace std;
 
@@ -14,7 +15,7 @@ int main() {
     
     //-------------------------
     //SORTOWANIE KUBELKOWE
-    // list<Linia> posortowanaLista = sortowanieKubelkowe(lista);
+    list<Linia> posortowanaLista = sortowanieKubelkowe(lista);
     // for (const auto& i : posortowanaLista) {
     //     cout << i.film << " | " << i.rating << endl;
     // }
@@ -25,23 +26,46 @@ int main() {
     Linia tabDoSPS[lista.size()];
     Linia temp[lista.size()];
 
-    int j = 0;
+    int k = 0;
     for (const auto& i : lista) {
-        tabDoSPS[j] = i;
-        j++;
+        tabDoSPS[k] = i;
+        k++;
     }
 
-    auto start = high_resolution_clock::now();
+    auto start1 = high_resolution_clock::now();
 
     sortowaniePrzezScalanie(tabDoSPS, temp, 0, lista.size()-1);
 
-    auto stop = high_resolution_clock::now();
-    auto duration = duration_cast<microseconds>(stop - start);
-    cout << "(Czas sortowania przez scalanie: "<< duration.count() << " mikrosekund)" << endl;
+    auto stop1 = high_resolution_clock::now();
+    auto duration1 = duration_cast<microseconds>(stop1 - start1);
+    cout << "(Czas sortowania przez scalanie: "<< duration1.count() << " mikrosekund)" << endl;
 
-    for (int i = 0; i < lista.size(); i++) {
-        cout << tabDoSPS[i].film << " | " << tabDoSPS[i].rating << endl;
+    // for (int i = 0; i < lista.size(); i++) {
+    //     cout << tabDoSPS[i].film << " | " << tabDoSPS[i].rating << endl;
+    // }
+    //-------------------------
+
+    //-------------------------
+    //QUICKSORT
+    Linia tabDoQS[lista.size()];
+
+    int j = 0;
+    for (const auto& i : lista) {
+        tabDoQS[j] = i;
+        j++;
     }
+
+    auto start2 = high_resolution_clock::now();
+
+    quicksort(tabDoQS, 0, lista.size()-1);
+
+    auto stop2 = high_resolution_clock::now();
+    auto duration2 = duration_cast<microseconds>(stop2 - start2);
+    cout << "(Czas quicksort'a: "<< duration2.count() << " mikrosekund)" << endl;
+
+    // for (int i = 0; i < lista.size(); i++) {
+    //     cout << tabDoQS[i].film << " | " << tabDoQS[i].rating << endl;
+    // }
     //-------------------------
 
     return 0;
