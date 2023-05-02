@@ -32,9 +32,7 @@ list<Linia> wczytajIPrzefiltruj(string filename, int iloscLinii) {
             getline(s, film, ',');
             getline(s, rating, ',');
 
-            rating.pop_back();
-            rating.pop_back();
-            rating.pop_back();
+            counter++;
 
             try
             {
@@ -45,12 +43,11 @@ list<Linia> wczytajIPrzefiltruj(string filename, int iloscLinii) {
                 continue;
             }
 
-            if(float_rating > 10) {
+            if(float_rating > 10 || float_rating < 0) {
                 continue;
             }
-
+            
             linie.push_back({indeks, film, float_rating});
-            counter++;
         }
     }
     inputFile.close();

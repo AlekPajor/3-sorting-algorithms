@@ -5,16 +5,15 @@
 
 using namespace std;
 
-
 void quicksort(Linia *tab, int lewy, int prawy)
 {
 	if(prawy <= lewy) return;
     
 	int i = lewy - 1;
     int j = prawy + 1; 
-	int pivot = static_cast<int>(tab[(lewy+prawy)/2].rating);
+	int pivot = tab[(lewy+prawy)/2].rating;
 
-	while(1)
+	while(true)
 	{
 		while(pivot>tab[++i].rating);
 		while(pivot<tab[--j].rating);
