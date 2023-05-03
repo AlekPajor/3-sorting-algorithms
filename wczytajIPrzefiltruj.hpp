@@ -19,8 +19,7 @@ list<Linia> wczytajIPrzefiltruj(string filename, int iloscLinii) {
     if(inputFile.is_open()) {
 
         string line;
-        int counter = 0;
-        while(getline(inputFile, line) && counter < iloscLinii) {
+        while(getline(inputFile, line) && linie.size() < iloscLinii) {
             
             stringstream s(line);
             string indeks;
@@ -31,8 +30,6 @@ list<Linia> wczytajIPrzefiltruj(string filename, int iloscLinii) {
             getline(s, indeks, ',');
             getline(s, film, ',');
             getline(s, rating, ',');
-
-            counter++;
 
             try
             {

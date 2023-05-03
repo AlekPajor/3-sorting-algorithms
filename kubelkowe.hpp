@@ -10,8 +10,6 @@
 using namespace std;
 using namespace std::chrono;
 
-int iloscWczytywanych = 1000;
-
 list<Linia> sortowanieKubelkowe(list<Linia> lista) {
     list<Linia> table[10];
     list<Linia> lista2;

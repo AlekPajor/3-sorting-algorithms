@@ -11,8 +11,9 @@ using namespace std;
 int main() {
     //-------------------------
     //WYKONYWANE ZAWSZE
-    int iloscWczytywanych = 200000;
+    int iloscWczytywanych = 1000000;
     list<Linia> lista = wczytajIPrzefiltruj("projekt2_dane.csv", iloscWczytywanych);
+    cout << "Test sortowania dla: " << lista.size() << " elementow" << endl;
     // for (const auto& i : lista) {
     //     cout << i.indeks << " | " << i.film << " | " << i.rating << endl;
     // }
